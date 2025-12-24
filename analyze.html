@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Analyze Plant | GreenThumb AI</title>
+    <title>Analyze Plant | GreenThumb AI 🌿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="navbar">
     <h2>🌿 GreenThumb AI</h2>
     <div>
@@ -16,26 +27,38 @@
     </div>
 </nav>
 
+<!-- Upload Section -->
 <section class="upload-area">
     <input type="file" id="imageUpload" accept="image/*" hidden>
+
     <div onclick="document.getElementById('imageUpload').click()">
         <div class="upload-icon">🌱</div>
         <h2>Upload Plant Image</h2>
-        <p>Click to upload image</p>
+        <p>Click to upload a plant photo</p>
     </div>
+
     <button id="analyzeBtn" disabled onclick="analyzePlant()">Analyze</button>
 </section>
 
+<!-- Result Section -->
 <section id="result" class="hidden">
     <div class="result-container">
-        <h2>Analysis Result</h2>
-        <img id="resultImage">
+        <h2>🌿 AI Analysis Result</h2>
 
+        <!-- Image Preview -->
+        <img id="resultImage" alt="Uploaded Plant Image">
+
+        <!-- Plant Info -->
         <div class="diagnosis">
-            <h3>🌿 Plant Information</h3>
-            <p id="plantInfo"></p>
+            <h3>Plant Detection</h3>
+            <p id="plantInfo">Analyzing...</p>
         </div>
 
+        <!-- Confidence Chart -->
+        <h3>Prediction Confidence</h3>
+        <canvas id="confidenceChart"></canvas>
+
+        <!-- Care Tips -->
         <div class="care-tips">
             <h3>🧑‍🌾 Care Tips</h3>
             <ul id="careList"></ul>
@@ -43,6 +66,10 @@
     </div>
 </section>
 
+<!-- Project Scripts -->
+<script src="js/ai.js"></script>
+<script src="js/charts.js"></script>
 <script src="js/script.js"></script>
+
 </body>
 </html>
