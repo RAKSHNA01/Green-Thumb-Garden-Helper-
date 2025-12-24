@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyze Plant | GreenThumb AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>🌿 GreenThumb AI</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="analyze.html">Analyze</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<section class="upload-area">
+    <input type="file" id="imageUpload" accept="image/*" hidden>
+    <div onclick="document.getElementById('imageUpload').click()">
+        <div class="upload-icon">🌱</div>
+        <h2>Upload Plant Image</h2>
+        <p>Click to upload image</p>
+    </div>
+    <button id="analyzeBtn" disabled onclick="analyzePlant()">Analyze</button>
+</section>
+
+<section id="result" class="hidden">
+    <div class="result-container">
+        <h2>Analysis Result</h2>
+        <img id="resultImage">
+
+        <div class="diagnosis">
+            <h3>🌿 Plant Information</h3>
+            <p id="plantInfo"></p>
+        </div>
+
+        <div class="care-tips">
+            <h3>🧑‍🌾 Care Tips</h3>
+            <ul id="careList"></ul>
+        </div>
+    </div>
+</section>
+
+<script src="js/script.js"></script>
+</body>
+</html>
