@@ -3,137 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Thumb Garden Helper - Hackathon Demo</title>
+    <title>Green Thumb Garden Helper - AI Plant Scanner</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>🌱 Green Thumb</h1>
+            <h1>🌱 Green Thumb AI</h1>
             <ul>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#demo">Demo</a></li>
-                <li><a href="#tech">Tech Stack</a></li>
-                <li><a href="#github">Code</a></li>
+                <li><a href="#demo">Try Scanner</a></li>
+                <li><a href="#tech">Tech</a></li>
+                <li><a href="#code">Code</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="hero">
         <div class="hero-content">
-            <h2>AR-Powered Plant Care for Campus Gardens</h2>
-            <p>Identify plants instantly, get AI care tips, track growth. Built with Google ARCore + Gemini for hackathons.</p>
-            <div class="cta">
-                <a href="#demo" class="btn-primary">Live Demo</a>
-                <a href="#github" class="btn-secondary">View Code</a>
+            <h2>Upload Leaf → AI Identifies Instantly</h2>
+            <p>Real-time plant disease detection + care tips using Google Gemini Vision</p>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📷</div>
+                <p>Drag & drop leaf image or click to upload</p>
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <button id="analyzeBtn" class="btn-primary" disabled>Analyze Plant</button>
             </div>
         </div>
     </section>
 
-    <section id="problem" class="section">
-        <h2>Campus Garden Challenge</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>40% Plant Loss</h3>
-                <p>Students plant but don't maintain due to lack of knowledge</p>
+    <section id="result" class="section hidden">
+        <div class="result-container">
+            <h2 id="plantName">Plant Identified</h2>
+            <img id="resultImage" alt="Analyzed plant">
+            <div class="diagnosis">
+                <h3>Diagnosis:</h3>
+                <p id="diagnosisText">Processing...</p>
             </div>
-            <div class="card">
-                <h3>Wasted Resources</h3>
-                <p>Water, soil, time lost on dead plants</p>
+            <div class="care-tips">
+                <h3>Care Instructions:</h3>
+                <ul id="careList"></ul>
             </div>
-            <div class="card">
-                <h3>Low Engagement</h3>
-                <p>No easy way to track progress or share tips</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="solution" class="section alternate">
-        <h2>How It Works</h2>
-        <div class="flowchart">
-            <div class="step">
-                <div class="circle">1</div>
-                <h4>AR Scan</h4>
-                <p>Point camera → ML Kit identifies plant instantly</p>
-            </div>
-            <div class="step">
-                <div class="circle">2</div>
-                <h4>AI Tips</h4>
-                <p>Gemini + weather data = personalized care plan</p>
-            </div>
-            <div class="step">
-                <div class="circle">3</div>
-                <h4>Track & Share</h4>
-                <p>Photo logs + Firebase community features</p>
-            </div>
+            <button id="newScan" class="btn-secondary">Scan New Plant</button>
         </div>
     </section>
 
     <section id="demo" class="section">
-        <h2>Interactive Demo</h2>
-        <div class="demo-container">
-            <video autoplay muted loop playsinline>
-                <source src="demo.mp4" type="video/mp4">
-                <!-- Add your demo video here or use placeholder -->
-            </video>
-            <div class="demo-stats">
-                <div>92% Plant ID Accuracy</div>
-                <div>40% Survival Rate ↑</div>
-                <div>24hr Hackathon Build</div>
+        <h2>Works Like This</h2>
+        <div class="demo-grid">
+            <div class="demo-step">
+                <div class="step-number">1</div>
+                <h4>Upload Photo</h4>
+                <p>Take photo of leaf/plant</p>
+            </div>
+            <div class="demo-step">
+                <div class="step-number">2</div>
+                <h4>AI Analyzes</h4>
+                <p>Gemini Vision detects species + diseases</p>
+            </div>
+            <div class="demo-step">
+                <div class="step-number">3</div>
+                <h4>Get Tips</h4>
+                <p>Personalized care plan instantly</p>
             </div>
         </div>
     </section>
 
     <section id="tech" class="section alternate">
-        <h2>Google Tech Stack</h2>
-        <div class="tech-grid">
-            <div class="tech-card">
-                <img src="https://developers.google.com/static/arcore/images/arcore-logo.svg" alt="ARCore">
-                <h4>ARCore</h4>
-                <p>Augmented overlays on real plants</p>
-            </div>
-            <div class="tech-card">
-                <img src="https://cloud.google.com/static/ml-kit/images/ml-kit-logo.svg" alt="ML Kit">
-                <h4>ML Kit</h4>
-                <p>Instant plant identification</p>
-            </div>
-            <div class="tech-card">
-                <img src="https://ai.google.dev/static/images/gemini_logo.svg" alt="Gemini">
-                <h4>Gemini AI</h4>
-                <p>Personalized care recommendations</p>
-            </div>
-            <div class="tech-card">
-                <img src="https://firebase.google.com/static/downloads/brand-guidelines/SVG/logo-logomark.svg" alt="Firebase">
-                <h4>Firebase</h4>
-                <p>Community sharing & analytics</p>
-            </div>
-            <div class="tech-card">
-                <img src="https://flutter.dev/images/shared/brand/flutter/logo/flutter-mono-81x100.png" alt="Flutter">
-                <h4>Flutter</h4>
-                <p>Cross-platform mobile app</p>
-            </div>
+        <h2>Powered By Google AI</h2>
+        <div class="tech-stack">
+            <span class="tech-badge">Gemini Vision API</span>
+            <span class="tech-badge">Google ML Kit</span>
+            <span class="tech-badge">Firebase</span>
+            <span class="tech-badge">Flutter</span>
         </div>
     </section>
 
-    <section id="github" class="section">
-        <h2>Deploy Your Own</h2>
-        <div class="code-block">
-            <pre><code>flutter create green_thumb_app
-cd green_thumb_app
-flutter pub add arcore_flutter_plugin ml_kit firebase_core google_generative_ai
-# Add ARCore permissions to android/app/src/main/AndroidManifest.xml
+    <section id="code" class="section">
+        <h2>Get The Code</h2>
+        <div class="code-section">
+            <pre><code>git clone https://github.com/yourusername/green-thumb-garden
+cd green-thumb-garden/mobile-app
+flutter pub get
 flutter run</code></pre>
-        </div>
-        <div class="links">
-            <a href="https://github.com/yourusername/green-thumb-garden" class="btn-primary">⭐ Star Repo</a>
-            <a href="https://play.google.com/store/apps/details?id=com.example.green_thumb" class="btn-secondary">APK Demo</a>
+            <a href="https://github.com/yourusername/green-thumb-garden" class="btn-primary">⭐ GitHub Repo</a>
         </div>
     </section>
 
     <footer>
-        <p>Built for Google Solution Challenge 2025 | Hackathon Ready 🚀</p>
+        <p>Google Solution Challenge 2025 | Hackathon Demo 🚀</p>
     </footer>
 
     <script src="script.js"></script>
