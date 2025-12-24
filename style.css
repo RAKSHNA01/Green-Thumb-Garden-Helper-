@@ -1,88 +1,89 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #F1F8E9;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background: #2E7D32;
+    background: rgba(46,125,50,0.9);
     color: white;
+    backdrop-filter: blur(10px);
 }
 
 .navbar a {
     color: white;
     margin-left: 1rem;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .hero {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
 }
 
-.btn {
-    background: #4CAF50;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    text-decoration: none;
+.hero h1 {
+    font-size: 3rem;
 }
 
 .upload-area {
     border: 3px dashed #4CAF50;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 4rem 2rem;
     text-align: center;
-    background: #F1F8E9;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
     max-width: 500px;
     margin: 3rem auto;
+    transition: 0.3s;
+}
+
+.upload-area:hover {
+    transform: scale(1.03);
 }
 
 .upload-icon {
     font-size: 4rem;
 }
 
-#analyzeBtn {
-    margin-top: 1.5rem;
-    padding: 0.8rem 2rem;
-    border: none;
+button {
     background: #4CAF50;
+    border: none;
     color: white;
-    border-radius: 20px;
+    padding: 0.9rem 2.2rem;
+    border-radius: 30px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-#analyzeBtn:disabled {
+button:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.hidden {
-    display: none;
 }
 
 .result-container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 3rem auto;
-    background: white;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(15px);
     padding: 3rem;
-    border-radius: 20px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     text-align: center;
 }
 
 #resultImage {
-    max-width: 300px;
-    border-radius: 15px;
+    max-width: 280px;
+    border-radius: 20px;
     margin: 1.5rem 0;
 }
 
 .care-tips li {
     background: #E8F5E8;
     padding: 1rem;
-    margin: 0.5rem 0;
-    border-radius: 10px;
+    margin: 0.6rem 0;
+    border-radius: 12px;
 }
+.hidden { display: none; }
