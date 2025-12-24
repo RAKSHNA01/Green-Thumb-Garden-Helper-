@@ -4,33 +4,41 @@ let uploadedImage;
 
 imageUpload.addEventListener("change", () => {
     uploadedImage = imageUpload.files[0];
-    if (uploadedImage) {
-        analyzeBtn.disabled = false;
-        alert("Image uploaded successfully 🌿");
-    }
+    analyzeBtn.disabled = false;
 });
 
-function analyzePlant() {
+async function analyzePlant() {
     document.getElementById("result").classList.remove("hidden");
 
-    document.getElementById("resultImage").src =
-        URL.createObjectURL(uploadedImage);
+    const img = document.getElementById("resultImage");
+    img.src = URL.createObjectURL(uploadedImage);
 
-    document.getElementById("plantInfo").innerText =
-        "Plant Name: Tulsi (Holy Basil)\nType: Medicinal Plant\nHealth: Healthy 🌱";
+    img.onload = async () => {
+        const predictions = await analyzeWithAI(img);
 
+        document.getElementById("plantInfo").innerText =
+            `Detected Object: ${predictions[0].className}
+Confidence: ${(predictions[0].probability * 100).toFixed(2)}%`;
+
+        showChart(predictions);
+
+        loadCareTips();
+    };
+}
+
+function loadCareTips() {
     const tips = [
-        "Provide 5–6 hours of sunlight daily",
-        "Water regularly but avoid waterlogging",
-        "Use well-drained soil",
-        "Prune dead leaves weekly"
+        "Ensure adequate sunlight",
+        "Water based on soil moisture",
+        "Avoid overwatering",
+        "Monitor leaf color for disease"
     ];
 
     const list = document.getElementById("careList");
     list.innerHTML = "";
-    tips.forEach(tip => {
+    tips.forEach(t => {
         const li = document.createElement("li");
-        li.textContent = tip;
+        li.textContent = t;
         list.appendChild(li);
     });
 }
